@@ -1,13 +1,30 @@
-
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Home, Users, PlusCircle, Settings, Bell, Eye, Edit, Trash2, MessageSquare } from "lucide-react";
+import {
+  Home,
+  Users,
+  PlusCircle,
+  Settings,
+  Bell,
+  Eye,
+  Edit,
+  Trash2,
+  MessageSquare,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { fetchUserProfile } from "@/services/authService";
 
 // Mock data for owner's mess listings
 const myMesses = [
@@ -22,8 +39,9 @@ const myMesses = [
     ],
     views: 324,
     inquiries: 12,
-    imageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
-    status: "active"
+    imageUrl:
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
+    status: "active",
   },
   {
     id: "102",
@@ -35,8 +53,9 @@ const myMesses = [
     ],
     views: 156,
     inquiries: 5,
-    imageUrl: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    status: "active"
+    imageUrl:
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    status: "active",
   },
 ];
 
@@ -48,9 +67,10 @@ const inquiries = [
     messId: "101",
     messName: "Harmony Haven PG",
     roomType: "Double",
-    message: "Hi, is the double room still available? I'm looking to move in by next month.",
+    message:
+      "Hi, is the double room still available? I'm looking to move in by next month.",
     date: "2023-08-15T10:30:00",
-    status: "new"
+    status: "new",
   },
   {
     id: "202",
@@ -58,9 +78,10 @@ const inquiries = [
     messId: "101",
     messName: "Harmony Haven PG",
     roomType: "Single",
-    message: "Hello, I'm interested in the single room. Can I visit to see the place this weekend?",
+    message:
+      "Hello, I'm interested in the single room. Can I visit to see the place this weekend?",
     date: "2023-08-14T15:45:00",
-    status: "replied"
+    status: "replied",
   },
   {
     id: "203",
@@ -68,9 +89,10 @@ const inquiries = [
     messId: "102",
     messName: "Sunshine Comfort Lodge",
     roomType: "Double",
-    message: "Is WiFi included in the rent? Also, what about laundry facilities?",
+    message:
+      "Is WiFi included in the rent? Also, what about laundry facilities?",
     date: "2023-08-13T09:15:00",
-    status: "replied"
+    status: "replied",
   },
 ];
 
@@ -78,15 +100,32 @@ const inquiries = [
 const stats = [
   { title: "Total Listings", value: 2, icon: <Home className="h-4 w-4" /> },
   { title: "Available Rooms", value: 4, icon: <Home className="h-4 w-4" /> },
-  { title: "Total Inquiries", value: 17, icon: <MessageSquare className="h-4 w-4" /> },
+  {
+    title: "Total Inquiries",
+    value: 17,
+    icon: <MessageSquare className="h-4 w-4" />,
+  },
   { title: "Current Tenants", value: 8, icon: <Users className="h-4 w-4" /> },
 ];
 
 const OwnerDashboard = () => {
+  const [user, setUser] = useState(null);
+
+useEffect(() => {
+  const getUser = async () => {
+    try {
+      const userData = await fetchUserProfile();
+      setUser(userData);
+    } catch (error) {
+      console.error("Error fetching user profile:", error.message);
+    }
+  };
+  getUser();
+}, []);
   return (
     <div className="min-h-screen flex flex-col">
       <NavBar />
-      
+
       <main className="flex-1 bg-muted/30 pt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Owner Dashboard Header */}
@@ -94,9 +133,11 @@ const OwnerDashboard = () => {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
               <div>
                 <h1 className="text-2xl font-bold">Owner Dashboard</h1>
-                <p className="text-muted-foreground">Manage your mess listings and tenant inquiries</p>
+                <p className="text-muted-foreground">
+                  Manage your mess listings and tenant inquiries
+                </p>
               </div>
-              
+
               <div className="flex items-center gap-3">
                 <Button variant="ghost" size="icon">
                   <Bell className="h-5 w-5" />
@@ -112,7 +153,7 @@ const OwnerDashboard = () => {
                 </Link>
               </div>
             </div>
-            
+
             {/* Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {stats.map((stat, index) => (
@@ -120,7 +161,9 @@ const OwnerDashboard = () => {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground mb-1">{stat.title}</p>
+                        <p className="text-sm font-medium text-muted-foreground mb-1">
+                          {stat.title}
+                        </p>
                         <p className="text-2xl font-bold">{stat.value}</p>
                       </div>
                       <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -132,15 +175,21 @@ const OwnerDashboard = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Tabs for different sections */}
           <Tabs defaultValue="listings" className="w-full">
             <TabsList className="mb-6">
-              <TabsTrigger value="listings" className="px-4">My Listings</TabsTrigger>
-              <TabsTrigger value="inquiries" className="px-4">Inquiries</TabsTrigger>
-              <TabsTrigger value="tenants" className="px-4">Current Tenants</TabsTrigger>
+              <TabsTrigger value="listings" className="px-4">
+                My Listings
+              </TabsTrigger>
+              <TabsTrigger value="inquiries" className="px-4">
+                Inquiries
+              </TabsTrigger>
+              <TabsTrigger value="tenants" className="px-4">
+                Current Tenants
+              </TabsTrigger>
             </TabsList>
-            
+
             {/* My Listings Tab */}
             <TabsContent value="listings" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -148,36 +197,53 @@ const OwnerDashboard = () => {
                   <Card key={mess.id} className="overflow-hidden">
                     <div className="flex flex-col sm:flex-row">
                       <div className="sm:w-1/3">
-                        <img 
-                          src={mess.imageUrl} 
-                          alt={mess.title} 
-                          className="w-full h-full object-cover aspect-square sm:aspect-auto" 
+                        <img
+                          src={mess.imageUrl}
+                          alt={mess.title}
+                          className="w-full h-full object-cover aspect-square sm:aspect-auto"
                         />
                       </div>
-                      
+
                       <div className="flex-1 p-6">
                         <div className="flex justify-between items-start mb-2">
-                          <h3 className="font-semibold text-lg">{mess.title}</h3>
-                          <Badge variant={mess.status === 'active' ? 'default' : 'outline'}>
-                            {mess.status === 'active' ? 'Active' : 'Draft'}
+                          <h3 className="font-semibold text-lg">
+                            {mess.title}
+                          </h3>
+                          <Badge
+                            variant={
+                              mess.status === "active" ? "default" : "outline"
+                            }
+                          >
+                            {mess.status === "active" ? "Active" : "Draft"}
                           </Badge>
                         </div>
-                        
-                        <p className="text-sm text-muted-foreground mb-4">{mess.address}</p>
-                        
+
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {mess.address}
+                        </p>
+
                         <div className="space-y-2 mb-4">
                           {mess.rooms.map((room, index) => (
-                            <div key={index} className="flex justify-between items-center text-sm">
+                            <div
+                              key={index}
+                              className="flex justify-between items-center text-sm"
+                            >
                               <span>
                                 {room.type} Room (₹{room.price})
                               </span>
-                              <span className={`${room.available === 0 ? 'text-destructive' : 'text-primary'}`}>
+                              <span
+                                className={`${
+                                  room.available === 0
+                                    ? "text-destructive"
+                                    : "text-primary"
+                                }`}
+                              >
                                 {room.available}/{room.total} available
                               </span>
                             </div>
                           ))}
                         </div>
-                        
+
                         <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
                           <span className="flex items-center gap-1">
                             <Eye className="h-4 w-4" />
@@ -188,21 +254,33 @@ const OwnerDashboard = () => {
                             {mess.inquiries} inquiries
                           </span>
                         </div>
-                        
+
                         <div className="flex gap-2">
                           <Link to={`/mess/${mess.id}`}>
-                            <Button variant="outline" size="sm" className="flex items-center gap-1">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex items-center gap-1"
+                            >
                               <Eye className="h-3 w-3" />
                               View
                             </Button>
                           </Link>
                           <Link to={`/edit-listing/${mess.id}`}>
-                            <Button variant="outline" size="sm" className="flex items-center gap-1">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex items-center gap-1"
+                            >
                               <Edit className="h-3 w-3" />
                               Edit
                             </Button>
                           </Link>
-                          <Button variant="outline" size="sm" className="flex items-center gap-1 text-destructive">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex items-center gap-1 text-destructive"
+                          >
                             <Trash2 className="h-3 w-3" />
                             Delete
                           </Button>
@@ -213,7 +291,7 @@ const OwnerDashboard = () => {
                 ))}
               </div>
             </TabsContent>
-            
+
             {/* Inquiries Tab */}
             <TabsContent value="inquiries" className="mt-0">
               <Card>
@@ -226,29 +304,38 @@ const OwnerDashboard = () => {
                 <CardContent>
                   <div className="space-y-4">
                     {inquiries.map((inquiry) => (
-                      <Card key={inquiry.id} className={`border ${inquiry.status === 'new' ? 'border-primary' : ''}`}>
+                      <Card
+                        key={inquiry.id}
+                        className={`border ${
+                          inquiry.status === "new" ? "border-primary" : ""
+                        }`}
+                      >
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between mb-2">
                             <div>
                               <div className="flex items-center gap-2">
-                                <h4 className="font-semibold">{inquiry.tenantName}</h4>
-                                {inquiry.status === 'new' && (
-                                  <Badge>New</Badge>
-                                )}
+                                <h4 className="font-semibold">
+                                  {inquiry.tenantName}
+                                </h4>
+                                {inquiry.status === "new" && <Badge>New</Badge>}
                               </div>
                               <p className="text-sm text-muted-foreground">
-                                For {inquiry.roomType} room in {inquiry.messName}
+                                For {inquiry.roomType} room in{" "}
+                                {inquiry.messName}
                               </p>
                             </div>
                             <p className="text-xs text-muted-foreground">
                               {new Date(inquiry.date).toLocaleDateString()}
                             </p>
                           </div>
-                          
+
                           <p className="text-sm mb-4">{inquiry.message}</p>
-                          
+
                           <div className="flex gap-2">
-                            <Button size="sm" className="flex items-center gap-1">
+                            <Button
+                              size="sm"
+                              className="flex items-center gap-1"
+                            >
                               <MessageSquare className="h-3 w-3" />
                               Reply
                             </Button>
@@ -263,7 +350,7 @@ const OwnerDashboard = () => {
                 </CardContent>
               </Card>
             </TabsContent>
-            
+
             {/* Tenants Tab */}
             <TabsContent value="tenants" className="mt-0">
               <Card>
@@ -275,7 +362,8 @@ const OwnerDashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-center py-8 text-muted-foreground">
-                    Tenant management features will be available in the next update.
+                    Tenant management features will be available in the next
+                    update.
                   </p>
                 </CardContent>
               </Card>
@@ -283,7 +371,7 @@ const OwnerDashboard = () => {
           </Tabs>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

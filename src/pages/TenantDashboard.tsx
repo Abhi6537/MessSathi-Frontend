@@ -121,7 +121,7 @@ const TenantDashboard = () => {
     // In a real app, this would trigger an API call with the filters
     console.log("Filtering with:", filters);
   };
-
+  console.log(localStorage.getItem("user_type"));
   return (
     <div className="min-h-screen flex flex-col">
       <NavBar />

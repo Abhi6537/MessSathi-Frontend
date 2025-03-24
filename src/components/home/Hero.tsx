@@ -1,64 +1,71 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function Hero() {
   return (
-    <div className="relative pt-20 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-background -z-10" />
-      <div className="absolute top-1/3 -right-64 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-1/3 -left-64 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
+    <div className="relative pt-16 pb-8 overflow-hidden">
+      {/* Simple background image with overlay */}
+      <div className="absolute inset-0 -z-10">
+        <AspectRatio ratio={16 / 9} className="h-full">
+          <img 
+            src="http://images.jdmagicbox.com/comp/thanjavur/f5/9999p4362.4362.171210121517.i9f5/catalogue/vijayam-ladies-hostel-rajah-serfoji-government-college-thanjavur-hostels-for-women-8zpws.jpg" 
+            alt="Mess accommodation building" 
+            className="w-full h-full object-cover"
+          /> 
+          <div className="absolute inset-0 bg-black/40" />
+        </AspectRatio>
+      </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-40">
-        <div className="max-w-3xl mx-auto text-center animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6">
-            Find Your Perfect <span className="text-primary">Mess Accommodation</span>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Find Your Perfect Mess Accommodation
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
+          <p className="text-lg text-white/90 mb-8">
             Connecting mess owners with potential tenants. The simplest way to list or find quality accommodations in your area.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/register?type=tenant">
-              <Button size="lg" className="font-medium text-base px-6 h-12">
+              <Button size="lg" className="font-medium bg-white text-primary hover:bg-white/90">
                 Find a Mess
                 <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
             </Link>
             
             <Link to="/register?type=owner">
-              <Button size="lg" variant="outline" className="font-medium text-base px-6 h-12">
+              <Button size="lg" variant="outline" className="font-medium text-blue border-white hover:bg-white/20">
                 List Your Mess
               </Button>
             </Link>
           </div>
           
-          <div className="mt-16 flex justify-center">
-            <div className="grid grid-cols-3 gap-8 sm:gap-16 text-center">
-              <div>
-                <p className="text-4xl font-bold text-primary">500+</p>
-                <p className="text-sm text-muted-foreground mt-1">Listed Messes</p>
+          <div className="mt-12 flex justify-center">
+            <div className="grid grid-cols-3 gap-6 sm:gap-12">
+              <div className="text-center">
+                <p className="text-3xl font-bold text-white">0</p>
+                <p className="text-sm text-white/80">Listed Messes</p>
               </div>
               
-              <div>
-                <p className="text-4xl font-bold text-primary">2000+</p>
-                <p className="text-sm text-muted-foreground mt-1">Happy Tenants</p>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-white">0</p>
+                <p className="text-sm text-white/80">Happy Tenants</p>
               </div>
               
-              <div>
-                <p className="text-4xl font-bold text-primary">50+</p>
-                <p className="text-sm text-muted-foreground mt-1">Cities</p>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-white">0</p>
+                <p className="text-sm text-white/80">Cities</p>
               </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Wave divider */}
-      <div className="absolute bottom-0 left-0 right-0">
+      {/* Simple wave divider */}
+      <div className="absolute bottom-[-84px] left-0 right-0">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto">
           <path
             fill="currentColor"

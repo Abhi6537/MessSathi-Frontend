@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -7,18 +6,50 @@ import { Menu, X } from "lucide-react";
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState<{ name: string } | null>(null);
   const location = useLocation();
+
+  // Check authentication status
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.log("No token found");
+          return;
+        }
+
+        const response = await fetch("http://127.0.0.1:80/api/auth/user", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`, // Ensure "Bearer" is included
+            "Content-Type": "application/json",
+          },
+        });
+
+        const data = await response.json();
+        console.log("User Data:", data);
+
+        if (response.ok) {
+          setUser(data.user);
+        } else {
+          console.error("Failed to fetch user:", data.message);
+          setUser(null);
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        setUser(null);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -35,6 +66,30 @@ export default function NavBar() {
     { title: "For Tenants", href: "/#for-tenants" },
   ];
 
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem("token"); // Get token
+
+      const response = await fetch("http://127.0.0.1:80/api/auth/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`, // Send token for blacklist
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        localStorage.removeItem("token"); // Remove token from local storage
+        setUser(null); // Reset user state
+        window.location.href = "/login"; // Redirect to login page
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -45,9 +100,11 @@ export default function NavBar() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-display font-bold text-primary">MessSathi</span>
+            <span className="text-2xl font-display font-bold text-primary">
+              Mess Finder
+            </span>
+            <img src="logo.jpg" alt="Logo" className="h-8" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -62,17 +119,30 @@ export default function NavBar() {
               </Link>
             ))}
           </div>
-          
-          {/* Auth Buttons */}
+
+          {/* Auth Section */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="outline" className="font-medium">
-                Log In
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button className="font-medium">Sign Up</Button>
-            </Link>
+            {user ? (
+              <div className="flex items-center space-x-3">
+                <span className="font-medium text-foreground">
+                  Welcome, {user.name}
+                </span>
+                <Button variant="outline" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button variant="outline" className="font-medium">
+                    Log In
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button className="font-medium">Sign Up</Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -102,15 +172,38 @@ export default function NavBar() {
                 {link.title}
               </Link>
             ))}
+
             <div className="flex flex-col space-y-3 pt-4">
-              <Link to="/login" className="w-full">
-                <Button variant="outline" className="w-full font-medium">
-                  Log In
-                </Button>
-              </Link>
-              <Link to="/register" className="w-full">
-                <Button className="w-full font-medium">Sign Up</Button>
-              </Link>
+              {user ? (
+                <div className="flex flex-col space-y-3">
+                  <span className="text-center font-medium text-foreground">
+                    Welcome, {user.name}
+                  </span>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => {
+                      fetch("http://localhost:5000/api/auth/logout", {
+                        method: "POST",
+                        credentials: "include",
+                      }).then(() => setUser(null));
+                    }}
+                  >
+                    Logout
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <Link to="/login" className="w-full">
+                    <Button variant="outline" className="w-full font-medium">
+                      Log In
+                    </Button>
+                  </Link>
+                  <Link to="/register" className="w-full">
+                    <Button className="w-full font-medium">Sign Up</Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

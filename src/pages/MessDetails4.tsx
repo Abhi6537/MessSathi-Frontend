@@ -12,12 +12,12 @@ import { MapPin, Phone, Mail, Users, DollarSign, Home, Heart, Share, MessageSqua
 import { toast } from "sonner";
 
 // Mock data for mess details
-const messMockData = {
-  id: "1",
-  title: "Saurav Boys' Mess",
+const messMockData4 = {
+  id: "2",
+  title: "Anwesha Girls Mess",
   description: "A premium mess offering comfortable accommodation with all modern amenities. Located in a peaceful neighborhood with easy access to public transport, shopping, and entertainment.",
   address: "A5 Kalyani ,Near JIS Boys' Hostel",
-  contactPerson: "Saurav Singh",
+  contactPerson: "Anwesha",
   phone: "+91 9433239521",
   email: "contact@sauravboysmess.com",
   images: [
@@ -47,9 +47,9 @@ const messMockData = {
   reviews: 20,
 };
 
-const MessDetail = () => {
+const MessDetail4 = () => {
   const { id } = useParams<{ id: string }>();
-  const [messData, setMessData] = useState(messMockData);
+  const [messData, setMessData] = useState(messMockData4);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
   const [enquiryMessage, setEnquiryMessage] = useState("");
@@ -397,6 +397,4 @@ const MessDetail = () => {
   );
 };
 
-export default MessDetail;
-
-
+export default MessDetail4;
