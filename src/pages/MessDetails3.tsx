@@ -13,18 +13,18 @@ import { toast } from "sonner";
 
 // Mock data for mess details
 const messMockData3 = {
-  id: "2",
-  title: "Anwesha Girls Mess",
+  id: "3",
+  title: "Abhi Paying Guest",
   description: "A premium mess offering comfortable accommodation with all modern amenities. Located in a peaceful neighborhood with easy access to public transport, shopping, and entertainment.",
-  address: "A5 Kalyani ,Near JIS Boys' Hostel",
-  contactPerson: "Anwesha",
-  phone: "+91 9433239521",
-  email: "contact@sauravboysmess.com",
+  address: "Boro Jonepur , Kanchrapara Loco , Kanchrapra ,North 24 Pgs",
+  contactPerson: "Abhinandan Ghosh",
+  phone: "+91 7063488278",
+  email: "contact@abhipayingguest.com",
   images: [
-    "https://5.imimg.com/data5/OV/AT/MY-40256963/paying-guest-500x500.jpg",
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1258&q=80",
-    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    "https://5.imimg.com/data5/CY/ES/MY-1926763/humser-paying-guest-house-500x500.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwswqDghNLqgC-rhu5CvUWZpAB9HCiB66z8-DEz21clMkBZbnCxNfbKQqnuYJYnFIG0mo&usqp=CAU",
+    "https://5.imimg.com/data5/SELLER/Default/2023/2/RS/RI/SF/45940176/pg-hostels-for-men-500x500.jpg",
+    "https://content.jdmagicbox.com/v2/comp/mumbai/a4/022pxx22.xx22.130911120033.d7a4/catalogue/red-coral-girls-pg-services-rajendra-nagar-borivali-east-mumbai-paying-guest-accommodations-wp2ltcsu9f-250.jpg",
   ],
   rooms: [
     { type: "Single", price: 5000, available: 2, total: 4 },
@@ -32,7 +32,7 @@ const messMockData3 = {
     { type: "Triple", price: 2000, available: 0, total: 2 },
   ],
   amenities: [
-    "WiFi", "Hot Water", "Security","Furnished",
+    "WiFi", "Hot Water", "Security","Furnished","Garage","Balcony"
     
   ],
   rules: [
@@ -42,9 +42,7 @@ const messMockData3 = {
     "No pets allowed",
     "Monthly rent to be paid by 5th of every month"
   ],
-  distance: 1.8,
-  rating: 4.2,
-  reviews: 20,
+
 };
 
 const MessDetail3 = () => {
@@ -356,18 +354,18 @@ const MessDetail3 = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-4">Similar Messes Nearby</h3>
                 <div className="space-y-4">
-                  {[1, 2, 3].map((item) => (
+                  {[1].map((item) => (
                     <Card key={item} className="overflow-hidden">
                       <div className="flex">
                         <div className="w-1/3">
                           <img 
-                            src={`https://images.unsplash.com/photo-15224292435-d24dbb6b0${item + 256}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60`} 
+                            src={"https://content.jdmagicbox.com/v2/comp/gangtok/s8/9999p3592.3592.240910210532.b2s8/catalogue/radiant-paying-guest-tadong-gangtok-paying-guest-accommodations-for-student-5m7sfgx53g-250.jpg"} 
                             alt={`Similar mess ${item}`}
                             className="w-full h-full object-cover"
                           />
                         </div>
                         <div className="p-3 flex-1">
-                          <h4 className="font-semibold text-sm mb-1">City View Mess</h4>
+                          <h4 className="font-semibold text-sm mb-1">Akanksha Girls' PG</h4>
                           <p className="text-xs text-muted-foreground mb-2">
                             {(messData.distance + 0.3 * item).toFixed(1)} km from your location
                           </p>

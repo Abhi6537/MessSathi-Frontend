@@ -14,38 +14,36 @@ import { toast } from "sonner";
 // Mock data for mess details
 const messMockData2 = {
   id: "2",
-  title: "Anwesha Girls Mess",
+  title: "Anwesha Girls' Mess",
   description: "A premium mess offering comfortable accommodation with all modern amenities. Located in a peaceful neighborhood with easy access to public transport, shopping, and entertainment.",
-  address: "A5 Kalyani ,Near JIS Boys' Hostel",
-  contactPerson: "Anwesha",
-  phone: "+91 9433239521",
-  email: "contact@sauravboysmess.com",
+  address: "A11, Uttar Bhabanipur , Kalyani ,Nadia",
+  contactPerson: "Anwesha Das",
+  phone: "+91 0000000000",
+  email: "contact@anweshagirlsmess.com",
   images: [
-    "https://5.imimg.com/data5/OV/AT/MY-40256963/paying-guest-500x500.jpg",
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1258&q=80",
-    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    "https://5.imimg.com/data5/GD/MO/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
+    "https://5.imimg.com/data5/JS/QN/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
+    "https://5.imimg.com/data5/DB/ET/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
+    "https://3.bp.blogspot.com/-Dk4t4zV1MgQ/Vqhz8yLivcI/AAAAAAAAEvE/cjA8WS4ZmbU/s1600/IMG_5452.JPG",
   ],
   rooms: [
-    { type: "Single", price: 5000, available: 2, total: 4 },
-    { type: "Double", price: 3000, available: 1, total: 6 },
-    { type: "Triple", price: 2000, available: 0, total: 2 },
+    { type: "Single", price: 6000, available: 2, total: 4 },
+    { type: "Double", price: 3500, available: 1, total: 6 },
+    { type: "Triple", price: 2500, available: 0, total: 2 },
   ],
   amenities: [
-    "WiFi", "Hot Water", "Security","Furnished",
+    "WiFi", "Hot Water", "Security","Furnished","Security with CCTV","Garage"
     
   ],
   rules: [
 
-    "Guests allowed until 9 PM",
+    "Enter in the mess before 9 PM",
+    "No outsider expect family",
     "Keep noise levels down after 10 PM",
     "No pets allowed",
     "Monthly rent to be paid by 5th of every month"
-  ],
-  distance: 1.8,
-  rating: 4.2,
-  reviews: 20,
-};
+  ]
+  };
 
 const MessDetail2 = () => {
   const { id } = useParams<{ id: string }>();
@@ -356,26 +354,26 @@ const MessDetail2 = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-4">Similar Messes Nearby</h3>
                 <div className="space-y-4">
-                  {[1, 2, 3].map((item) => (
+                  {[1].map((item) => (
                     <Card key={item} className="overflow-hidden">
                       <div className="flex">
                         <div className="w-1/3">
                           <img 
-                            src={`https://images.unsplash.com/photo-15224292435-d24dbb6b0${item + 256}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60`} 
+                            src={"https://5.imimg.com/data5/CY/ES/MY-1926763/humser-paying-guest-house-500x500.jpg"} 
                             alt={`Similar mess ${item}`}
                             className="w-full h-full object-cover"
                           />
                         </div>
                         <div className="p-3 flex-1">
-                          <h4 className="font-semibold text-sm mb-1">City View Mess</h4>
+                          <h4 className="font-semibold text-sm mb-1">Abhi Paying Guest</h4>
                           <p className="text-xs text-muted-foreground mb-2">
                             {(messData.distance + 0.3 * item).toFixed(1)} km from your location
                           </p>
                           <div className="flex justify-between items-center">
                             <span className="text-xs">
-                              From <span className="font-semibold text-sm">₹6000</span>/mo
+                              From <span className="font-semibold text-sm">₹5000</span>/mo
                             </span>
-                            <Link to={`/mess/${messData.id + item}`}>
+                            <Link to={"/mess/${messData.id + item}"}>
                               <Button size="sm" variant="outline" className="text-xs h-7 px-2">
                                 View
                               </Button>

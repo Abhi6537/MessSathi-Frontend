@@ -14,30 +14,30 @@ const featuredMesses = [
     id: "1",
     title: "Saurav Boys' Mess",
     address: "A5 Kalyani ,Near JIS Boys' Hostel",
-    rent: 2000,
+    rent: 3000,
     roomType: "Double",
     capacity: 2,
-    imageUrl: "https://5.imimg.com/data5/OV/AT/MY-40256963/paying-guest-500x500.jpg",
+    imageUrl: "https://5.imimg.com/data5/DE/KU/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
     featured: true
   },
   {
     id: "2",
     title: "Anwesha Girls' Mess",
     address: "A11, Uttar Bhabanipur , Kalyani ,Nadia",
-    rent: 2500,
+    rent: 6000,
     roomType: "Single",
     capacity: 1,
-    imageUrl: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1258&q=80",
+    imageUrl: "https://5.imimg.com/data5/GD/MO/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
     featured: true
   },
   {
     id: "3",
     title: "Abhi Paying Guest",
     address: "Boro Jonepur , Kanchrapara Loco , Kanchrapra ,North 24 Pgs",
-    rent: 2100,
+    rent: 2000,
     roomType: "Triple",
     capacity: 3,
-    imageUrl: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    imageUrl: "https://5.imimg.com/data5/CY/ES/MY-1926763/humser-paying-guest-house-500x500.jpg",
     featured: false
   },
   {
@@ -47,7 +47,7 @@ const featuredMesses = [
     rent: 3000,
     roomType: "Double",
     capacity: 2,
-    imageUrl: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    imageUrl: "https://content.jdmagicbox.com/v2/comp/gangtok/s8/9999p3592.3592.240910210532.b2s8/catalogue/radiant-paying-guest-tadong-gangtok-paying-guest-accommodations-for-student-5m7sfgx53g-250.jpg",
     featured: false
   }
 ];
@@ -117,7 +117,7 @@ const Index = () => {
                 </div>
                 <div className="hidden md:block">
                   <img 
-                    src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                    src="https://5.imimg.com/data5/AV/GD/TN/SELLER-1415647/innovative-paying-guest-pg-in-uttam-nagar-for-boys-only-.jpg" 
                     alt="Happy Tenants" 
                     className="rounded-lg object-cover w-full h-64"
                   />

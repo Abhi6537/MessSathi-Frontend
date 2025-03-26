@@ -187,12 +187,12 @@ const OwnerDashboard = () => {
                       <div className="flex flex-col sm:flex-row">
                         <div className="sm:w-1/3">
                           <img
-                            src={mess.imageUrl || "saurav.jpg"}
+                            src={mess.imageUrl || "placeholder.png"}
                             alt={mess.title}
                             className="w-full h-full object-cover aspect-square sm:aspect-auto"
                             onError={(e) => {
                               const imgElement = e.target as HTMLImageElement;
-                              imgElement.src = "saurav.jpg";
+                              imgElement.src = "placeholder.png";
                             }}
                           />
                         </div>

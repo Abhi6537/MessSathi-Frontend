@@ -13,94 +13,67 @@ import { Bell, MessageSquare, Heart, Settings, ListFilter } from "lucide-react";
 const mockMesses = [
   {
     id: "1",
-    title: "Sunshine Villa Mess",
-    address: "123 Main Street, Koramangala, Bangalore",
-    distance: 2.1,
-    rent: 6500,
+    title: "Saurav Boys' Mess",
+    address: "A5 Kalyani ,Near JIS Boys' Hostel",
+    rent: 3000,
     roomType: "Double",
     capacity: 2,
-    imageUrl: "https://images.unsplash.com/photo-1551927336-09d50efd69cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    imageUrl: "https://5.imimg.com/data5/DE/KU/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
     featured: true
   },
   {
     id: "2",
-    title: "Green View Accommodation",
-    address: "456 Park Avenue, Indiranagar, Bangalore",
-    distance: 1.4,
-    rent: 8000,
+    title: "Anwesha Girls' Mess",
+    address: "A11, Uttar Bhabanipur , Kalyani ,Nadia",
+    rent: 6000,
     roomType: "Single",
     capacity: 1,
-    imageUrl: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1258&q=80",
+    imageUrl: "https://5.imimg.com/data5/GD/MO/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
     featured: false
   },
   {
     id: "3",
-    title: "Harmony House",
-    address: "789 Lake View, HSR Layout, Bangalore",
-    distance: 0.8,
-    rent: 5500,
+    title: "Abhi Paying Guest",
+    address: "Boro Jonepur , Kanchrapara Loco , Kanchrapra ,North 24 Pgs",
+    rent: 2000,
     roomType: "Triple",
     capacity: 3,
-    imageUrl: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    imageUrl: "https://5.imimg.com/data5/CY/ES/MY-1926763/humser-paying-guest-house-500x500.jpg",
     featured: false
   },
   {
     id: "4",
-    title: "Urban Nest Mess",
-    address: "101 Hill Road, Whitefield, Bangalore",
-    distance: 2.9,
-    rent: 7000,
+    title: "Akanksha Girls PG",
+    address: "A3,Kalyani,Nadia",
+    rent: 3000,
     roomType: "Double",
     capacity: 2,
-    imageUrl: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    imageUrl: "https://content.jdmagicbox.com/v2/comp/gangtok/s8/9999p3592.3592.240910210532.b2s8/catalogue/radiant-paying-guest-tadong-gangtok-paying-guest-accommodations-for-student-5m7sfgx53g-250.jpg",
     featured: false
   },
-  {
-    id: "5",
-    title: "Royal Residence",
-    address: "555 Queen Road, JP Nagar, Bangalore",
-    distance: 1.2,
-    rent: 9000,
-    roomType: "Single",
-    capacity: 1,
-    imageUrl: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    featured: false
-  },
-  {
-    id: "6",
-    title: "The Nest PG",
-    address: "202 Tech Park, Electronic City, Bangalore",
-    distance: 3.0,
-    rent: 6000,
-    roomType: "Triple",
-    capacity: 3,
-    imageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
-    featured: false
-  }
+  
 ];
 
 // Mock saved messes
 const savedMesses = [
   {
     id: "2",
-    title: "Green View Accommodation",
-    address: "456 Park Avenue, Indiranagar, Bangalore",
-    distance: 1.4,
-    rent: 8000,
+    title: "Anwesha Girls' Mess",
+    address: "A11, Uttar Bhabanipur , Kalyani ,Nadia",
+    rent: 6000,
     roomType: "Single",
     capacity: 1,
-    imageUrl: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1258&q=80",
+    imageUrl: "https://5.imimg.com/data5/GD/MO/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
     featured: false
   },
   {
-    id: "5",
-    title: "Royal Residence",
-    address: "555 Queen Road, JP Nagar, Bangalore",
-    distance: 1.2,
-    rent: 9000,
-    roomType: "Single",
-    capacity: 1,
-    imageUrl: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    id: "3",
+    title: "Abhi Paying Guest",
+    address: "Boro Jonepur , Kanchrapara Loco , Kanchrapra ,North 24 Pgs",
+    rent: 2000,
+    roomType: "Triple",
+    capacity: 3,
+    imageUrl: "https://5.imimg.com/data5/CY/ES/MY-1926763/humser-paying-guest-house-500x500.jpg",
     featured: false
   },
 ];

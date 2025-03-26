@@ -13,18 +13,18 @@ import { toast } from "sonner";
 
 // Mock data for mess details
 const messMockData4 = {
-  id: "2",
-  title: "Anwesha Girls Mess",
+  id: "4",
+  title: "Akanksha Girls' PG",
   description: "A premium mess offering comfortable accommodation with all modern amenities. Located in a peaceful neighborhood with easy access to public transport, shopping, and entertainment.",
-  address: "A5 Kalyani ,Near JIS Boys' Hostel",
-  contactPerson: "Anwesha",
-  phone: "+91 9433239521",
-  email: "contact@sauravboysmess.com",
+  address: "A3,Kalyani,Nadia",
+  contactPerson: "Akanksha Singh",
+  phone: "+91 0000000000",
+  email: "contact@akankshagirlspg.com",
   images: [
-    "https://5.imimg.com/data5/OV/AT/MY-40256963/paying-guest-500x500.jpg",
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1258&q=80",
-    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    "https://content.jdmagicbox.com/v2/comp/gangtok/s8/9999p3592.3592.240910210532.b2s8/catalogue/radiant-paying-guest-tadong-gangtok-paying-guest-accommodations-for-student-5m7sfgx53g-250.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbfRhiZXg4-n0vHpzdogDeyD31r14e5FAnsN8XCnugpX2adaZFrYbjpXsRjdbirTG-8n0&usqp=CAU",
+    "https://content.jdmagicbox.com/comp/nagpur/w4/0712px712.x712.120614080014.j9w4/catalogue/gharounda-paying-guest-facility-ramnagar-nagpur-paying-guest-accommodations-h4gpo1wngg.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlDUAWK5aUfoqKxIeHamCgTRUSJIZl4Xuh8PcveWpk8QtyxSRJCnsWWVgacF3xKWGsfs&usqp=CAU",
   ],
   rooms: [
     { type: "Single", price: 5000, available: 2, total: 4 },
@@ -42,9 +42,7 @@ const messMockData4 = {
     "No pets allowed",
     "Monthly rent to be paid by 5th of every month"
   ],
-  distance: 1.8,
-  rating: 4.2,
-  reviews: 20,
+ 
 };
 
 const MessDetail4 = () => {
@@ -356,18 +354,18 @@ const MessDetail4 = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-4">Similar Messes Nearby</h3>
                 <div className="space-y-4">
-                  {[1, 2, 3].map((item) => (
+                  {[1].map((item) => (
                     <Card key={item} className="overflow-hidden">
                       <div className="flex">
                         <div className="w-1/3">
                           <img 
-                            src={`https://images.unsplash.com/photo-15224292435-d24dbb6b0${item + 256}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60`} 
+                            src={"https://5.imimg.com/data5/DE/KU/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg"} 
                             alt={`Similar mess ${item}`}
                             className="w-full h-full object-cover"
                           />
                         </div>
                         <div className="p-3 flex-1">
-                          <h4 className="font-semibold text-sm mb-1">City View Mess</h4>
+                          <h4 className="font-semibold text-sm mb-1">Saurav Boys' Mess</h4>
                           <p className="text-xs text-muted-foreground mb-2">
                             {(messData.distance + 0.3 * item).toFixed(1)} km from your location
                           </p>

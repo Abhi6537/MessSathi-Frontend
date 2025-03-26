@@ -21,10 +21,10 @@ const messMockData = {
   phone: "+91 9433239521",
   email: "contact@sauravboysmess.com",
   images: [
-    "https://5.imimg.com/data5/OV/AT/MY-40256963/paying-guest-500x500.jpg",
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1258&q=80",
-    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    "https://5.imimg.com/data5/DE/KU/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
+    "https://5.imimg.com/data5/YM/JT/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
+    "https://5.imimg.com/data5/BY/GT/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
+    "https://5.imimg.com/data5/TL/IO/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg",
   ],
   rooms: [
     { type: "Single", price: 5000, available: 2, total: 4 },
@@ -41,10 +41,8 @@ const messMockData = {
     "Keep noise levels down after 10 PM",
     "No pets allowed",
     "Monthly rent to be paid by 5th of every month"
-  ],
-  distance: 1.8,
-  rating: 4.2,
-  reviews: 20,
+  ]
+  
 };
 
 const MessDetail = () => {
@@ -356,18 +354,18 @@ const MessDetail = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-4">Similar Messes Nearby</h3>
                 <div className="space-y-4">
-                  {[1, 2, 3].map((item) => (
+                  {[1].map((item) => (
                     <Card key={item} className="overflow-hidden">
                       <div className="flex">
                         <div className="w-1/3">
                           <img 
-                            src={`https://images.unsplash.com/photo-15224292435-d24dbb6b0${item + 256}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60`} 
+                            src={"https://5.imimg.com/data5/GD/MO/MY-78592872/paying-guest-in-andheri-west-near-station-1000x1000.jpg"} 
                             alt={`Similar mess ${item}`}
                             className="w-full h-full object-cover"
                           />
                         </div>
                         <div className="p-3 flex-1">
-                          <h4 className="font-semibold text-sm mb-1">City View Mess</h4>
+                          <h4 className="font-semibold text-sm mb-1">Anwesha Girls Mess</h4>
                           <p className="text-xs text-muted-foreground mb-2">
                             {(messData.distance + 0.3 * item).toFixed(1)} km from your location
                           </p>

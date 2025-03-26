@@ -58,14 +58,16 @@ export default function NavBar() {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+  const userRole = localStorage.getItem("role");
 
   const navLinks = [
     { title: "Home", href: "/" },
     { title: "How It Works", href: "/#how-it-works" },
-    { title: "For Mess Owners", href: "/#for-owners" },
-    { title: "For Tenants", href: "/#for-tenants" },
+    { title: "For Mess Owners", href: user ? (userRole === "owner" ? "/owner-dashboard" : "/login") : "/login" },
+    { title: "For Tenants", href: user ? (userRole === "tenant" ? "/tenant-dashboard" : "/login") : "/login" },
   ];
-
+  
+  
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem("token"); // Get token
@@ -102,9 +104,8 @@ export default function NavBar() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <span className="text-2xl font-display font-bold text-primary">
-              Mess Finder
+              Mess Sathi
             </span>
-            <img src="logo.jpg" alt="Logo" className="h-8" />
           </Link>
 
           {/* Desktop Navigation */}

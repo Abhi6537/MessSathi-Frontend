@@ -81,7 +81,7 @@ const AuthForm = ({ mode, defaultUserType }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-      <h2 className="text-2xl font-bold mb-6 text-center">
+      <h2 className="text-2xl font-bold mb-6 text-center text-black">
         {mode === "register" ? "Register" : "Login"}
       </h2>
       {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
@@ -95,7 +95,7 @@ const AuthForm = ({ mode, defaultUserType }) => {
                 type="text"
                 name="name"
                 placeholder="John Doe"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 text-black"
                 onChange={handleChange}
                 required
               />
@@ -106,7 +106,7 @@ const AuthForm = ({ mode, defaultUserType }) => {
                 type="text"
                 name="phone"
                 placeholder="Optional"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 text-black"
                 onChange={handleChange}
               />
             </div>
@@ -130,7 +130,7 @@ const AuthForm = ({ mode, defaultUserType }) => {
             type="email"
             name="email"
             placeholder="example@email.com"
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 text-black"
             onChange={handleChange}
             required
           />
@@ -142,7 +142,7 @@ const AuthForm = ({ mode, defaultUserType }) => {
             type="password"
             name="password"
             placeholder="********"
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 text-black"
             onChange={handleChange}
             required
           />
